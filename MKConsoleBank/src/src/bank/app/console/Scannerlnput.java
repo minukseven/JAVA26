@@ -14,7 +14,11 @@ final public class Scannerlnput {
 	public int readInt(String message) {
 		System.out.print(message);
 		String inStr = scanner.nextLine();
-		return Integer.parseInt(inStr);
+		try {
+			return Integer.parseInt(inStr);
+		} catch (NumberFormatException e) {
+			return -1;
+		}
 	}
 	
 	public boolean readYesNo(String message) {
@@ -22,10 +26,9 @@ final public class Scannerlnput {
 			System.out.print(message + "(y/n)");
 			String in = scanner.nextLine().trim();
 			switch (in.toLowerCase()) {
-
 			case "y", "yes" -> { return true; }
 			case "n", "no" -> { return false; }
-			default -> System.out.println("y 또는 n을 입력하세요~~~");
+			default -> System.out.println("y 또는 n을 입력하세요");
 			}
 		}
 		
